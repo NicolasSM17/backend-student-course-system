@@ -29,6 +29,22 @@ public class StudentServiceImpl implements IStudentService{
     }
 
     @Override
+    public void deleteById(Long id) {
+        studentRepository.deleteById(id);
+    }
+
+    @Override
+    public Student update(Long id, Student student) {
+        Student studentDB = studentRepository.findById(id).get();
+        studentDB.setName(student.getName());
+        studentDB.setLastName(student.getLastName());
+        studentDB.setEmail(student.getEmail());
+        studentDB.setCourseId(student.getCourseId());
+
+        return studentRepository.save(studentDB);
+    }
+
+    @Override
     public List<Student> findByIdCourse(Long idCourse) {
         return studentRepository.findAllStudent(idCourse);
     }

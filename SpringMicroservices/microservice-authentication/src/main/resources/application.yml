@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: msvc-authentication
+  config:
+    import: optional:configserver:http://localhost:8888

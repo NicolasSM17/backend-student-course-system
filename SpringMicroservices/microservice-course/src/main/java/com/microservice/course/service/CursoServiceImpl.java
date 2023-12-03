@@ -35,6 +35,20 @@ public class CursoServiceImpl implements ICourseService{
     }
 
     @Override
+    public void deleteById(Long id) {
+        courseRepository.deleteById(id);
+    }
+
+    @Override
+    public Course update(Long id, Course course) {
+        Course courseDB = courseRepository.findById(id).get();
+        courseDB.setName(course.getName());
+        courseDB.setTeacher(course.getTeacher());
+
+        return courseRepository.save(courseDB);
+    }
+
+    @Override
     public StudentByCourseResponse findStudentsByIdCourse(Long idCourse) {
         // Consultar el curso
         Course course = courseRepository.findById(idCourse).orElse(new Course());

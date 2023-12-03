@@ -12,11 +12,13 @@
         <module name="microservice-course" />
         <module name="microservice-eureka" />
         <module name="microservice-config" />
+        <module name="microservice-authentication" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="microservice-authentication" options="-parameters" />
       <module name="microservice-config" options="-parameters" />
       <module name="microservice-course" options="-parameters" />
       <module name="microservice-eureka" options="-parameters" />

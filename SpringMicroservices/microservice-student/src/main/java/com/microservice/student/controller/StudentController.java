@@ -30,6 +30,22 @@ public class StudentController {
         return ResponseEntity.ok(studentService.findById(id));
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Long id){
+        if(id != null){
+            studentService.deleteById(id);
+
+            return ResponseEntity.ok("Registro Eliminado");
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student student){
+        return new ResponseEntity<>(studentService.update(id, student), HttpStatus.OK);
+    }
+
     @GetMapping("/search-by-course/{idCourse}")
     public ResponseEntity<?> findByIdCourse(@PathVariable Long idCourse){
         return ResponseEntity.ok(studentService.findByIdCourse(idCourse));
